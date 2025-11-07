@@ -87,7 +87,60 @@ class LinkedList {
     return str + " null"
   }
 
+  insertAt(value, index) {
+    const newNode = new Node(value);
+    if (index === 0) {
+      return this.prepend(value)
+    }
+    else if (index == this.size) {
+      return this.append(value)
+    }
+    else if (index >= 0 && index < this.size) {
+      let leftNode = this.head
+      let rightNode = null
+      for (let i = 0; i < index - 1; i++) {
+        leftNode = leftNode.next
+      }
+      rightNode = leftNode.next
+      newNode.next = rightNode
+      leftNode.next = newNode
+      this.size++
+      return newNode
+    }
+    else
+      return null
+  }
 
+  removeAt(index) {
+    if (index < 0 || index >= this.size) {
+      return null
+    }
+    if (index == 0) {
+      this.head = this.head.next
+      this.size--;
+
+      if (this.size == 0) {
+        this.tail = null
+      }
+      return
+    }
+    if (index = this.size - 1) {
+      this.pop()
+      return
+    }
+
+
+    let leftNode = this.head
+    for (let i = 0; i < index - 1; i++) {
+      leftNode = leftNode.next
+    }
+
+    const nodeToRemove = leftNode.next
+    leftNode.next = nodeToRemove.next
+
+    this.size--
+
+  }
 }
 class Node {
   constructor(value) {
@@ -103,18 +156,21 @@ list.append("dog");
 list.append("cat");
 list.append("lion");
 list.append("parrot");
-list.prepend("hamster");
-
-// console.log(list.head);
-// console.log(list.tail);
-// console.log("AT");
-// console.log(list.at(-1));
 
 console.log(`tamaño: ${list.size}`);
 console.log("--LISTA--");
-
 console.log(list.toString());
 
-console.log(list.contains("mouse"));
-console.log(list.find("parrot"));
+list.insertAt("frog", 4)
+
+console.log(`tamaño: ${list.size}`);
+console.log("--LISTA--");
+console.log(list.toString());
+
+list.removeAt(4)
+
+
+console.log(`tamaño: ${list.size}`);
+console.log("--LISTA--");
+console.log(list.toString());
 
