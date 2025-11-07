@@ -149,28 +149,4 @@ class Node {
   }
 }
 
-
-const list = new LinkedList();
-
-list.append("dog");
-list.append("cat");
-list.append("lion");
-list.append("parrot");
-
-console.log(`tamaño: ${list.size}`);
-console.log("--LISTA--");
-console.log(list.toString());
-
-list.insertAt("frog", 4)
-
-console.log(`tamaño: ${list.size}`);
-console.log("--LISTA--");
-console.log(list.toString());
-
-list.removeAt(4)
-
-
-console.log(`tamaño: ${list.size}`);
-console.log("--LISTA--");
-console.log(list.toString());
-
+export {LinkedList, Node}
